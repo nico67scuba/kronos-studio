@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio multimedia de Andrés Sebastián Sanmartín Palacios - Kronos Studio">
+    <title>Andrés Sanmartín | Sanmar Production | Kronos Studio</title>
+    <link rel="stylesheet" href="../../estilos.css">
+</head>
+<body>
+
+    <header class="hero-header">
+        <h1>Andrés Sanmartín | Sanmar Production</h1>
+        <p>Motion Graphics 2D, Diseño Audiovisual e Interfaces Interactivas</p>
+        <nav class="nav-bar">
+            <a href="../../index.html">&larr; Volver al inicio</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#multimedia">Multimedia</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <section id="identidad">
+            <h2>Identidad Creativa</h2>
+            <div class="perfil-grid">
+                <div>
+                    <img src="imagenes/perfil.jpg" alt="Identidad visual y retrato geométrico de Andrés Sebastián Sanmartín Palacios">
+                </div>
+                <div>
+                    <h3>Andrés Sebastián Sanmartín Palacios</h3>
+                    <p>Estudiante de Diseño Multimedia en la Universidad Politécnica Salesiana (Cuenca). Me apasiona dar vida a identidades visuales mediante animación 2D en After Effects, narrativa documental y programación web creativa.</p>
+                    <p><strong>Enfoque creativo:</strong> Me interesa desarrollar piezas de motion graphics, cortometrajes documentales, identidades corporativas animadas y experiencias web interactivas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="proyectos">
+            <h2>Mis Trabajos Creativos</h2>
+            <div class="grid-cards">
+                <article class="card">
+                    <div>
+                        <figure>
+                            <img src="imagenes/proyecto1.jpg" alt="Vista previa del proyecto Identidad Visual Animada: Sanmar Production">
+                            <figcaption>Identidad Visual Animada: Sanmar Production &mdash; Adobe After Effects, Illustrator y Photoshop</figcaption>
+                        </figure>
+                        <h3>Identidad Visual Animada: Sanmar Production</h3>
+                        <p>Sistema gráfico modular y paquete de animación de logotipo diseñado para producciones audiovisuales independientes.</p>
+                    </div>
+                    <p><strong>Herramientas:</strong> Adobe After Effects, Illustrator y Photoshop</p>
+                </article>
+
+                <article class="card">
+                    <div>
+                        <figure>
+                            <img src="imagenes/proyecto2.jpg" alt="Vista previa del proyecto Visualizador Espectral de Audio">
+                            <figcaption>Visualizador Espectral de Audio &mdash; After Effects Expression Controls y Diseño Vectorial</figcaption>
+                        </figure>
+                        <h3>Visualizador Espectral de Audio</h3>
+                        <p>Composición gráfica reactiva sincronizada con frecuencias musicales para escenarios y eventos multimedia.</p>
+                    </div>
+                    <p><strong>Herramientas:</strong> After Effects Expression Controls y Diseño Vectorial</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="multimedia">
+            <h2>Experiencia Multimedia</h2>
+            <p>La pista de audio ambiental (ambiente.wav) representa la atmósfera sonora minimalista que utilizo en mis introducciones audiovisuales, mientras que el video (presentacion.webm) muestra una prueba de movimiento orbital continuo aplicado a gráficos vectoriales.</p>
+
+            <div class="media-grid">
+                <div class="media-box">
+                    <h3>Paisaje Sonoro Original (Audio HTML5)</h3>
+                    <p>Escucha una muestra de diseño sonoro ambiental creada para el portafolio:</p>
+                    <audio controls>
+                        <source src="audio/ambiente.wav" type="audio/wav">
+                        Tu navegador no soporta el elemento de audio HTML5.
+                    </audio>
+                </div>
+
+                <div class="media-box">
+                    <h3>Demo Visual en Movimiento (Video HTML5)</h3>
+                    <p>Reproduce la pieza de animación geométrica de presentación:</p>
+                    <video controls width="480">
+                        <source src="videos/presentacion.webm" type="video/webm">
+                        Tu navegador no soporta el elemento de video HTML5.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <h2>Formulario de Contacto y Colaboración</h2>
+            <p class="aviso-demo">
+                <strong>Nota:</strong> Este formulario es estrictamente demostrativo para fines académicos. 
+                No almacena datos ni envía mensajes reales; utilice únicamente datos ficticios.
+            </p>
+
+            <form class="contact-form" action="#" method="get" onsubmit="alert('Formulario demostrativo validado correctamente.'); return false;">
+                <div class="form-group">
+                    <label for="nombre">Nombre del visitante:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ej. Camila Mendoza" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="email" id="correo" name="correo" placeholder="Ej. visitante@ejemplo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo-proyecto">Tipo de proyecto de interés:</label>
+                    <select id="tipo-proyecto" name="tipo-proyecto" required>
+                        <option value="">-- Seleccione una opción --</option>
+                        <option value="motion">Animación y Motion Graphics</option>
+                        <option value="ilustracion">Ilustración Digital y Arte Conceptual</option>
+                        <option value="web">Diseño de Interfaz Web Multimedia</option>
+                        <option value="audio-video">Producción Audiovisual y Sonora</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Modalidad de colaboración:</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="modalidad" value="remoto" required> Trabajo Remoto
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="modalidad" value="presencial"> Presencial (Cuenca)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="modalidad" value="hibrido"> Modalidad Híbrida
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje">Mensaje o descripción de la propuesta:</label>
+                    <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe aquí los detalles ficticios de tu proyecto..." required></textarea>
+                </div>
+
+                <button type="submit">Enviar propuesta demostrativa</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Portafolio personal de <strong>Andrés Sebastián Sanmartín Palacios</strong> &mdash; <a href="../../index.html" style="color:#00e5ff;">Volver a Kronos Studio</a></p>
+    </footer>
+
+</body>
+</html>
