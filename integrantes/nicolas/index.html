@@ -12,12 +12,13 @@
     <header class="hero-header">
         <h1>Nicolás Herrera | Kronos Studio</h1>
         <p>Animación 2D, Storyboard y Diseño Multimedia</p>
-        <nav class="nav-bar">
-            <a href="../../index.html">&larr; Volver al inicio</a>
-            <a href="#proyectos">Proyectos</a>
-            <a href="#multimedia">Multimedia</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
+       <nav class="nav-bar">
+    <a href="../../index.html">&larr; Volver al inicio</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#multimedia">Multimedia</a>
+    <a href="#arte-interactivo">Canvas Interactivo</a>
+    <a href="#contacto">Contacto</a>
+</nav>
     </header>
 
     <main class="container">
@@ -89,6 +90,236 @@
                 </div>
             </div>
         </section>
+
+<section id="arte-interactivo">
+    <h2>Canvas Interactivo - Inspirado en Basquiat</h2>
+
+    <p>Esta composición está inspirada en el arte urbano de
+    Jean-Michel Basquiat. Puedes intervenir el mural utilizando
+    diferentes colores y creando tus propios trazos.</p>
+
+    <div style="background:#181818; padding:15px; border-radius:10px;">
+
+        <canvas id="canvasBasquiat" width="800" height="420"
+            style="width:100%; height:auto; display:block;
+            cursor:crosshair; touch-action:none;
+            border-radius:5px;">
+        </canvas>
+
+        <div style="display:flex; gap:15px; flex-wrap:wrap;
+            align-items:center; margin-top:15px; color:white;">
+
+            <label>Color del pincel:</label>
+            <input type="color" id="colorPincel" value="#171717">
+
+            <label>Grosor:</label>
+            <input type="range" id="grosorPincel"
+                min="2" max="25" value="5">
+
+            <button type="button" id="reiniciarCanvas"
+                style="background:#FFD60A; color:black;
+                padding:10px; border:none; cursor:pointer;">
+                Reiniciar mural
+            </button>
+
+        </div>
+    </div>
+
+    <p>Utiliza el mouse o tu dedo para dibujar sobre el mural.</p>
+</section>
+
+<script>
+(function() {
+
+    const canvas = document.getElementById("canvasBasquiat");
+    const ctx = canvas.getContext("2d");
+    const color = document.getElementById("colorPincel");
+    const grosor = document.getElementById("grosorPincel");
+
+    let dibujando = false;
+    let anterior;
+
+    // Funcion para crear figuras y lineas
+    function linea(puntos, color, ancho, cerrar = false, relleno = null) {
+        ctx.beginPath();
+        ctx.moveTo(puntos[0][0], puntos[0][1]);
+
+        for (let i = 1; i < puntos.length; i++) {
+            ctx.lineTo(puntos[i][0], puntos[i][1]);
+        }
+
+        if (cerrar) ctx.closePath();
+
+        if (relleno) {
+            ctx.fillStyle = relleno;
+            ctx.fill();
+        }
+
+        ctx.strokeStyle = color;
+        ctx.lineWidth = ancho;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        ctx.stroke();
+    }
+
+    // Funcion para escribir palabras
+    function texto(palabra, x, y, tamano, color, giro = 0) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(giro);
+        ctx.font = "bold " + tamano + "px monospace";
+        ctx.fillStyle = color;
+        ctx.fillText(palabra, 0, 0);
+        ctx.restore();
+    }
+
+    // Composicion artistica inicial
+    function dibujarMural() {
+
+        // Fondo
+        ctx.fillStyle = "#F2E5C4";
+        ctx.fillRect(0, 0, 800, 420);
+
+        ctx.fillStyle = "#2455D6";
+        ctx.fillRect(0, 0, 258, 420);
+
+        ctx.fillStyle = "#E63946";
+        ctx.fillRect(568, 0, 232, 290);
+
+        ctx.fillStyle = "#FFD60A";
+        ctx.fillRect(557, 290, 243, 130);
+
+        // Trazos abstractos
+        linea([[30,75],[197,51],[171,110],[235,104]],
+            "#F2E5C4", 13);
+
+        linea([[18,310],[223,286],[159,368]],
+            "#E63946", 16);
+
+        // Rostro
+        linea([
+            [285,153],[336,116],[416,127],
+            [474,111],[511,178],[501,265],
+            [459,308],[358,299],[300,263]
+        ], "#171717", 8, true, "#F47721");
+
+        // Ojo izquierdo
+        linea([[318,170],[375,158],[384,196],[326,202]],
+            "#171717", 6, true, "#F2E5C4");
+
+        // Ojo derecho
+        linea([[420,158],[477,169],[470,204],[419,196]],
+            "#171717", 6, true, "#F2E5C4");
+
+        // Pupilas
+        linea([[348,175],[354,192]], "#171717", 12);
+        linea([[446,177],[448,193]], "#171717", 12);
+
+        // Nariz
+        linea([[398,177],[382,231],[416,225]],
+            "#171717", 5);
+
+        // Boca
+        linea([[337,246],[463,236],[454,269],[344,278]],
+            "#171717", 6, true, "#F2E5C4");
+
+        // Dientes
+        for (let i = 0; i < 7; i++) {
+            linea([[350+i*16,245],[354+i*16,271]],
+                "#171717", 3);
+        }
+
+        // Corona
+        linea([
+            [330,99],[314,35],[366,66],
+            [397,17],[426,64],[482,35],[460,99]
+        ], "#171717", 6, true, "#FFD60A");
+
+        // Palabras decorativas
+        texto("KRONOS", 21, 170, 38, "#FFD60A", -0.07);
+        texto("ART", 42, 223, 54, "#171717", 0.05);
+        texto("NO RULES", 577, 90, 28, "#171717", -0.08);
+        texto("CREATE", 587, 210, 36, "#F2E5C4", 0.09);
+        texto("20 / 26", 583, 375, 36, "#171717", -0.04);
+        texto("N.H. / 03", 285, 383, 29, "#2455D6", -0.04);
+
+        // Pequenos trazos de estilo urbano
+        for (let i = 0; i < 30; i++) {
+
+            let x = (i * 137 + 37) % 800;
+            let y = (i * 97 + 19) % 420;
+
+            if (x > 275 && x < 530 && y < 320) continue;
+
+            linea([[x,y],[x+9,y+13],[x+17,y-8]],
+                i % 2 ? "#171717" : "#F2E5C4", 2);
+        }
+    }
+
+    // Obtener la posicion del mouse o dedo
+    function posicion(evento) {
+        const rect = canvas.getBoundingClientRect();
+
+        return [
+            (evento.clientX - rect.left) * canvas.width / rect.width,
+            (evento.clientY - rect.top) * canvas.height / rect.height
+        ];
+    }
+
+    // Comenzar a dibujar
+    canvas.addEventListener("pointerdown", function(e) {
+
+        if (dibujando) return;
+
+        dibujando = true;
+        canvas.setPointerCapture(e.pointerId);
+        anterior = posicion(e);
+
+        ctx.beginPath();
+        ctx.fillStyle = color.value;
+        ctx.arc(anterior[0], anterior[1],
+            Number(grosor.value) / 2, 0, Math.PI * 2);
+        ctx.fill();
+    });
+
+    // Dibujar mientras se mueve el mouse
+    canvas.addEventListener("pointermove", function(e) {
+
+        if (!dibujando || !canvas.hasPointerCapture(e.pointerId)) return;
+
+        let actual = posicion(e);
+
+        linea([anterior, actual], color.value,
+            Number(grosor.value));
+
+        anterior = actual;
+    });
+
+    // Dejar de dibujar
+    canvas.addEventListener("pointerup", function(e) {
+        if (canvas.hasPointerCapture(e.pointerId)) {
+            dibujando = false;
+        }
+    });
+
+    canvas.addEventListener("pointercancel", function(e) {
+        if (canvas.hasPointerCapture(e.pointerId)) {
+            dibujando = false;
+        }
+    });
+
+    canvas.addEventListener("lostpointercapture", function() {
+        dibujando = false;
+    });
+
+    // Reiniciar la composicion
+    document.getElementById("reiniciarCanvas")
+        .addEventListener("click", dibujarMural);
+
+    dibujarMural();
+
+})();
+</script>
 
         <section id="contacto">
             <h2>Formulario de Contacto y Colaboración</h2>
